@@ -1,0 +1,84 @@
+.banner-slider-section {
+    overflow: hidden;
+    /* Body background aap yahan ya index.css me add kar sakte hain */
+}
+
+.banner-heading {
+    font-size: 48px; /* 3rem se px me convert kiya */
+    font-weight: 700;
+    line-height: 1.2;
+    color: #000;
+    padding: 58px 65px 0px;
+}
+
+.slider-wrapper {
+    padding: 20px 0;
+}
+
+.product-img-box {
+    transition: all 0.5s ease;
+    opacity: 0.5; 
+    transform: scale(0.8);
+}
+
+/* Active slide highlight */
+.swiper-slide-active .product-img-box {
+    opacity: 1;
+    transform: scale(1.1); 
+}
+
+/* Custom Arrows */
+.swiper-button-prev-custom, .swiper-button-next-custom {
+    position: absolute;
+    top: 50%;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+    transform: translateY(-50%);
+    background: #fff; /* Agar background chahiye toh ise rakhein */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.swiper-button-prev-custom { left: 10%; }
+.swiper-button-next-custom { right: 10%; }
+
+/* Shop Now Button Styling */
+.shop-btn {
+    border-radius: 50px;
+    font-weight: 500;
+    background-color: #000;
+    border: none;
+    padding: 12px 30px; /* Pixels me padding */
+    transition: 0.3s;
+    color: #fff;
+}
+
+.shop-btn:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+/* Tablet and Mobile responsive */
+@media (max-width: 992px){
+    .banner-heading{font-size:36px;padding:40px 20px 0px;}
+    .slider-wrapper{padding:12px 0;}
+}
+
+@media (max-width: 768px) {
+    .banner-heading { 
+        font-size: 26px; /* scaled down for smaller devices */
+        padding: 28px 16px 0px;
+    }
+    .product-img-box img { max-height: 300px; width: auto; object-fit: contain; }
+    .swiper-button-prev-custom, .swiper-button-next-custom { display: none; }
+}
+
+@media (max-width: 576px) {
+    .banner-heading { font-size: 22px; padding: 20px 12px 0px; }
+    .product-img-box img { max-height: 220px; }
+}

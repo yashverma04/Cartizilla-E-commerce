@@ -1,0 +1,146 @@
+/* --- Interior Section Styling --- */
+.interior-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
+}
+
+.interior-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.interior-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #111;
+}
+
+/* --- Filter Tabs (Mobile Stacked Logic) --- */
+.filter-tabs {
+    display: flex;
+    flex-wrap: wrap; /* Mobile par stack hone ke liye */
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.tab-btn {
+    padding: 8px 22px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.tab-btn.active {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* --- ADVANCED BENTO GRID LAYOUT (Frame 170 Match) --- */
+.bento-grid {
+    display: grid;
+    /* 12 Columns Grid System for Flexibility */
+    grid-template-columns: repeat(12, 1fr);
+    /* 2 Rows with specific heights matching design */
+    grid-template-rows: 300px 300px;
+    gap: 20px;
+    min-height: 620px;
+}
+
+.grid-item {
+    border-radius: 30px; /* Rounded corners as per design */
+    overflow: hidden;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.grid-item img:hover {
+    transform: scale(1.03); /* Halka sa zoom effect */
+}
+
+/* Image Positioning Logic (Matching Frame 170) */
+
+/* Image 1 (Top-Left): 7 columns wide, 1 row high */
+.item-1 {
+    grid-column: 1 / span 7;
+    grid-row: 1 / 2;
+}
+
+/* Image 2 (Top-Right): 5 columns wide, 1 row high */
+.item-2 {
+    grid-column: 8 / span 5;
+    grid-row: 1 / 2;
+}
+
+/* Image 3 (Bottom-Left): 7 columns wide, 1 row high */
+.item-3 {
+    grid-column: 1 / span 7;
+    grid-row: 2 / 3;
+}
+
+/* Image 4 (Bottom-Right): 5 columns wide, 1 row high */
+.item-4 {
+    grid-column: 8 / span 5;
+    grid-row: 2 / 3;
+}
+
+/* ============================================= */
+/* Responsive Updates */
+/* ============================================= */
+
+@media (max-width: 992px) {
+    /* Tablet par grid ko 2x2 ka simple box bana diya */
+    .bento-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 15px;
+        min-height: auto;
+    }
+    
+    /* Sabhi items ko 1x1 ka box banaya */
+    .item-1, .item-2, .item-3, .item-4 {
+        grid-column: auto;
+        grid-row: auto;
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .interior-title { font-size: 26px; }
+    .filter-tabs { gap: 10px; }
+    .tab-btn { padding: 7px 18px; font-size: 14px; }
+}
+
+@media (max-width: 576px) {
+    .interior-container { padding: 0 16px; }
+    .interior-title { font-size: 22px; margin-bottom: 20px; }
+    
+    /* Mobile par sab ek ke niche ek (Stack) */
+    .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .grid-item {
+        height: 220px;
+        border-radius: 20px;
+    }
+
+    .filter-tabs { gap: 8px; }
+    .tab-btn { padding: 6px 14px; font-size: 13px; }
+}

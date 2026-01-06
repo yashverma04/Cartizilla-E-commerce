@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f3f5f9; /* Ek halka premium grey color */
+  font-family: 'Inter', sans-serif; /* Aapka font */
+  min-height: 100vh;
+}
+
+/* Add top spacing to prevent fixed navbar overlapping content */
+.app-container { padding-top: 110px; }
+@media (max-width: 992px) { .app-container { padding-top: 92px; } }
+@media (max-width: 576px) { .app-container { padding-top: 76px; } }

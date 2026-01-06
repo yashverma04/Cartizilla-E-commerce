@@ -1,0 +1,228 @@
+/* Custom Navbar Container */
+.navbar-custom {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    z-index: 9999;
+    background: white;
+    padding: 10px 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    height: 70px;
+    transition: all 0.3s ease;
+}
+
+.navbar-logo {
+    flex: 1; 
+    z-index: 1001;
+}
+
+.navbar-logo h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+/* --- CENTERED LINKS (Desktop) --- */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #4b566b;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.nav-links li a:hover {
+    color: #fe696a;
+}
+
+/* Icons Section Wrapper */
+.navbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+    flex: 1;
+    z-index: 1001;
+}
+
+/* --- SEARCH INSIDE CAPSULE --- */
+.search-wrapper-inside {
+    background: #f3f5f9;
+    border-radius: 25px;
+    padding: 5px 15px;
+    border: 1px solid #e3e9ef;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 40px;
+    flex-grow: 1;
+    max-width: 250px;
+}
+
+.search-input-small {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+    padding: 5px;
+}
+
+.close-icon-small {
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: 0.2s;
+}
+
+.close-icon-small:hover {
+    color: #fe696a;
+}
+
+/* Icon Buttons */
+.icon-btn {
+    font-size: 18px;
+    color: #4b566b;
+    border: none;
+    background: transparent;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.icon-btn:hover {
+    color: #fe696a;
+}
+
+/* Cart Badge */
+.cart-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: #fe696a;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+/* --- CART DRAWER --- */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 10000; 
+}
+
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    height: 100vh;
+    background: white;
+    z-index: 10001;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.btn-checkout {
+    background-color: #fe696a;
+    color: white;
+    border: none;
+}
+
+/* ============================================= */
+/* Mobile Responsive (The Fix) */
+/* ============================================= */
+
+@media (max-width: 992px) {
+    .navbar-custom { 
+        padding: 10px 15px; 
+        height: 60px; 
+        width: 92%;
+    }
+
+    /* Mobile Menu Dropdown Fix */
+    .nav-links { 
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        width: 100%;
+        padding: 20px;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transform: none;
+    } 
+
+    .nav-links.open {
+        display: flex; /* Hamburger par click hone par show hoga */
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f3f5;
+    }
+
+    .search-wrapper-inside {
+        max-width: 100%;
+        height: 38px;
+        margin-left: 10px;
+    }
+
+    .cart-drawer { width: 100%; }
+
+    .d-none { display: none !important; }
+    .d-flex { display: flex !important; }
+}
