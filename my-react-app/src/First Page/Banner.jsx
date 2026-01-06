@@ -4,6 +4,9 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
+// 1. IMPORT FRAMER MOTION (Typewriter hata diya)
+import { motion } from 'framer-motion';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -14,7 +17,6 @@ import img03 from '../assets/03.png';
 import img04 from '../assets/04.png';
 
 const Banner = () => {
-    // 1. DATA ARRAY: Yahan humne prices ko Rupees (₹) me badal diya hai
     const productData = [
         { name: "Modern Fabric Sofa Set", price: "₹45,000", img: img01 },
         { name: "Minimalist Gray Bed Frame", price: "₹12,500", img: img03 },
@@ -23,10 +25,64 @@ const Banner = () => {
 
     const [activeIndex, setActiveIndex] = useState(0);
 
+    // --- ANIMATION CONFIGURATION ---
+    const line1 = "Everything You Need for".split(" ");
+    const line2 = "a Modern Interior".split(" ");
+
+    const wordVariant = {
+        hidden: { y: 20, opacity: 0 }, // Text niche aur invisible rahega start mein
+        visible: (i) => ({
+            y: 0,
+            opacity: 1,
+            transition: {
+                delay: i * 0.1, // Har word 0.1s ke gap par aayega
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1], // Smooth easing
+            },
+        }),
+    };
+    // -------------------------------
+
     return (
         <section className="banner-slider-section py-5">
             <div className="container text-center">
-                <h1 className="banner-heading mb-5">Everything You Need for <br /> a Modern Interior</h1>
+                
+                {/* 2. UPDATED MODERN HEADING */}
+                <h1 className="banner-heading mb-5 d-flex flex-column align-items-center" style={{ minHeight: '90px' }}>
+                    
+                    {/* Line 1 */}
+                    <div className="d-block">
+                        {line1.map((word, i) => (
+                            <motion.span
+                                key={i}
+                                custom={i}
+                                initial="hidden"
+                                animate="visible"
+                                variants={wordVariant}
+                                style={{ display: 'inline-block', marginRight: '8px' }}
+                            >
+                                {word}
+                            </motion.span>
+                        ))}
+                    </div>
+
+                    {/* Line 2 (Isme thoda extra delay diya hai taaki line 1 ke baad aaye) */}
+                    <div className="d-block">
+                        {line2.map((word, i) => (
+                            <motion.span
+                                key={i}
+                                custom={i + line1.length} // Delay continue karne ke liye
+                                initial="hidden"
+                                animate="visible"
+                                variants={wordVariant}
+                                style={{ display: 'inline-block', marginRight: '8px' }}
+                            >
+                                {word}
+                            </motion.span>
+                        ))}
+                    </div>
+
+                </h1>
                 
                 <div className="slider-wrapper position-relative">
                     <Swiper
@@ -54,7 +110,6 @@ const Banner = () => {
                         }}
                         className="mySwiper"
                     >
-                        {/* Pehla Set */}
                         {productData.map((item, index) => (
                             <SwiperSlide key={`main-${index}`}>
                                 <div className="product-img-box">
@@ -63,7 +118,6 @@ const Banner = () => {
                             </SwiperSlide>
                         ))}
 
-                        {/* Duplication Set taaki loop smooth chale */}
                         {productData.map((item, index) => (
                             <SwiperSlide key={`dup-${index}`}>
                                 <div className="product-img-box">
@@ -85,7 +139,6 @@ const Banner = () => {
                     <p className="m-0 text-muted">
                         {productData[activeIndex]?.name}
                     </p>
-                    {/* Yahan ab ₹ symbol ke saath price dikhegi */}
                     <h3 className="fw-bold">
                         {productData[activeIndex]?.price}
                     </h3>
