@@ -1,13 +1,22 @@
-import React, { useState } from 'react'
-import Navbar from './First Page/Navbar' 
-import Banner from './First Page/Banner' 
-import CategoriesSection from './First Page/CategoriesSection'
-import Popularproducts from './First Page/Popularproducts'
-import Interiordesign from './First Page/Interiordesign'
-import Footer from './First Page/Footer'
+import React, { useState, useEffect } from 'react';
+import Navbar from './First Page/Navbar';
+import Banner from './First Page/Banner';
+import CategoriesSection from './First Page/CategoriesSection';
+import Popularproducts from './First Page/Popularproducts';
+import Interiordesign from './First Page/Interiordesign';
+import Footer from './First Page/Footer';
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  // 1. Initial State: LocalStorage se data load karein (Refresh ke baad data bachane ke liye)
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem('myCartItems');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  // 2. Sync with LocalStorage: Jab bhi cartItems change ho, use save karein
+  useEffect(() => {
+    localStorage.setItem('myCartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (product) => {
     setCartItems((prevItems) => {
@@ -41,7 +50,7 @@ function App() {
       <Interiordesign />
       <Footer /> 
     </div>
-  )
+  );
 }
 
 export default App;

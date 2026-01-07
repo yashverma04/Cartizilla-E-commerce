@@ -19,8 +19,10 @@
 }
 
 .navbar-logo {
-    flex: 1; 
+    /* FIXED: flex 1 ki jagah auto karein taaki ye beech ke area ko block na kare */
+    flex: 0 0 auto; 
     z-index: 1001;
+    min-width: 150px; /* Logo ke liye space */
 }
 
 .navbar-logo h4 {
@@ -41,7 +43,8 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    /* FIXED: Isko 1005 karein taaki ye logo/icons (1001) ke upar rahe */
+    z-index: 1005; 
 }
 
 .nav-links li a {
@@ -51,10 +54,28 @@
     font-weight: 500;
     transition: 0.3s;
     white-space: nowrap;
+    position: relative;
+    padding: 5px 0;
 }
 
 .nav-links li a:hover {
     color: #fe696a;
+}
+
+/* UI/UX Bonus: Underline animation on hover */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fe696a;
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
 }
 
 /* Icons Section Wrapper */
@@ -63,8 +84,10 @@
     align-items: center;
     gap: 10px;
     justify-content: flex-end;
-    flex: 1;
+    /* FIXED: flex 1 ki jagah auto karein */
+    flex: 0 0 auto;
     z-index: 1001;
+    min-width: 150px; /* Icons ke liye space */
 }
 
 /* --- SEARCH INSIDE CAPSULE --- */
@@ -115,6 +138,7 @@
     justify-content: center;
     cursor: pointer;
     transition: color 0.2s ease;
+    position: relative;
 }
 
 .icon-btn:hover {
@@ -175,10 +199,15 @@
     background-color: #fe696a;
     color: white;
     border: none;
+    transition: 0.3s;
+}
+
+.btn-checkout:hover {
+    background-color: #e55a5b;
 }
 
 /* ============================================= */
-/* Mobile Responsive (The Fix) */
+/* Mobile Responsive */
 /* ============================================= */
 
 @media (max-width: 992px) {
@@ -188,7 +217,7 @@
         width: 92%;
     }
 
-    /* Mobile Menu Dropdown Fix */
+    /* Mobile view mein absolute positioning hatana zaroori hai */
     .nav-links { 
         display: none; 
         flex-direction: column;
@@ -201,11 +230,11 @@
         padding: 20px;
         border-radius: 25px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        transform: none;
+        transform: none; /* Mobile par transform reset */
     } 
 
     .nav-links.open {
-        display: flex; /* Hamburger par click hone par show hoga */
+        display: flex; 
     }
 
     .nav-links li {
@@ -222,7 +251,4 @@
     }
 
     .cart-drawer { width: 100%; }
-
-    .d-none { display: none !important; }
-    .d-flex { display: flex !important; }
 }
