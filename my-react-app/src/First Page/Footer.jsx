@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className="footer-grid">
                     {/* Brand Section */}
                     <div className="footer-col brand-col">
-                        <h2 className="footer-logo">Cartzilla</h2>
+                        <h2 className="footer-logo">Stay Soft</h2>
                         <p className="footer-desc">
                             Premium furniture for modern interiors. We provide high-quality, sustainable designs to elevate your living space.
                         </p>

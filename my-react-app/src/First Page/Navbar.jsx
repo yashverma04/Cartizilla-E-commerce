@@ -42,7 +42,7 @@ const Navbar = ({ cartCount, cartItems = [], setCartItems = () => {} }) => {
             <div className="navbar-custom">
                 {/* 1. Logo Section */}
                 <div className="navbar-logo">
-                    <h4>Cartzilla</h4>
+                    <h4>Stay Soft</h4>
                 </div>
 
                 {/* 2. Navigation Links (Fixed Center & Mobile Menu) */}
